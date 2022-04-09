@@ -4,7 +4,15 @@
 */
 
 #include <thread>
-#include <unistd.h>
+// if compiled using MSVC, use this replacement for unistd.h;
+#ifdef _MSC_VER
+	#define _UNISTD_h
+    #include <io.h>
+    #include <process.h>
+#else
+	#include <unistd.h>
+#endif
+
 #include <random>
 #include <string>
 #include <chrono>
